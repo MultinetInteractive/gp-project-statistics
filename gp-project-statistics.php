@@ -23,7 +23,7 @@ class GP_Project_Statistics {
 	public function gp_locale_statistics( $atts ) {
 		$return = '<style type="text/css">
 	.gp-stats-table a:link { text-decoration: none !important; box-shadow: 0 0; }
-	.gp-stats-table tbody td.percent100 {background: #46B450; color: white;}
+	.gp-stats-table tbody td.percent100 {background: #46B450; color: white !important;}
 	.gp-stats-table tbody td.percent90 {background: #6BC373;}
 	.gp-stats-table tbody td.percent80 {background: #90D296;}
 	.gp-stats-table tbody td.percent70 {background: #B5E1B9;}
@@ -33,7 +33,7 @@ class GP_Project_Statistics {
 	.gp-stats-table tbody td.percent30 {background: #F1ADAD;}
 	.gp-stats-table tbody td.percent20 {background: #EA8484;}
 	.gp-stats-table tbody td.percent10 {background: #E35B5B;}
-	.gp-stats-table tbody td.percent0 {background: #DC3232; color: white;}
+	.gp-stats-table tbody td.percent0 {background: #DC3232; color: white !important;}
 </style>';
 
 		$projects = GP::$project->all( "name" );
