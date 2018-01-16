@@ -22,6 +22,7 @@ class GP_Project_Statistics {
 
 	public function gp_locale_statistics( $atts ) {
 		$return = '<style type="text/css">
+	.gp-stats-table a:link { text-decoration: none !important; box-shadow: 0 0; }
 	.gp-stats-table tbody td.percent100 {background: #46B450; color: white;}
 	.gp-stats-table tbody td.percent90 {background: #6BC373;}
 	.gp-stats-table tbody td.percent80 {background: #90D296;}
@@ -88,12 +89,14 @@ class GP_Project_Statistics {
 
 		foreach( $percent_locales as $loc => $value ) {
 			$waiting = 0;
-			$return .= '<tr><td align="center">' . $loc . '</td>';
+			$return .= '<tr><td align="center">' . gp_link_get( gp_url_join( gp_url('/languages'), $loc ), esc_html( $loc ) ) . '</td>';
 			foreach( $projects as $proj ) {
 				if( $project_locales[$proj->id][$loc] != null ) {
-					$percent = $project_locales[$proj->id][$loc]->percent_translated();
-					$return .= '<td align="center" class="' . $this->get_percent_class($percent)  . '">' . $percent . ' %</td>';
-					$waiting += $project_locales[$proj->id][$loc]->waiting_count;
+					$locale = $project_locales[$proj->id][$loc];
+					$percent = $locale->percent_translated();
+					$return .= '<td align="center" class="' . $this->get_percent_class($percent)  . '">';
+					$return .= gp_link_get( gp_url_project_locale( $proj->path, $loc, $locale->slug ), $percent ." %" ) . '</td>';
+					$waiting += $locale->waiting_count;
 				} else {
 					$return .= '<td align="center">—</td>';
 				}
