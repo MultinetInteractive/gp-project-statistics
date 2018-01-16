@@ -20,7 +20,7 @@ class GP_Project_Statistics {
 	}
 
 	public function gp_project_statistics( $atts ) {
-		$projects = GP::$project->all();
+		$projects = GP::$project->all( "name" );
 		$return = '<table class="table">';
 		foreach($projects as $project) {
 			$return .= '<tr><th colspan="2">' .  $project->name . '</th></tr>';
