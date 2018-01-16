@@ -26,7 +26,7 @@ class GP_Project_Statistics {
 			$return .= '<tr><th colspan="2">' .  $project->name . '</th></tr>';
 			$sets = GP::$translation_set->by_project_id( $project->id );
 			foreach($sets as $set) {
-				$return .= '<tr><td>' . $set->name . '</td><td>' . $set->percent_translated() . ' %</td></tr>';
+				$return .= '<tr><td>' . $set->name . '</td><td align="right">' . $set->percent_translated() . ' %</td></tr>';
 			}
 			$return .= '<tr><td colspan="2">&nbsp;</td></tr>';
 		}
